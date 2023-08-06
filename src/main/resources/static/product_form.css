@@ -11,6 +11,7 @@ html {
 }
 *{
 font-family: 'SUITE-Regular';
+font-size : 18px;
 }
 /* 컨테이너 스타일 */
 .wrap {
