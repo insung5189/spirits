@@ -107,15 +107,15 @@ public class UserService {
         this.userRepository.save(user);
         return user;
     }
-    public SiteUser updateProfile(SiteUser user, File file) throws IOException {
+    public SiteUser updateProfile(SiteUser user, MultipartFile file) throws IOException {
         String projectPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "files";
 
         UUID uuid = UUID.randomUUID();
-        String fileName = uuid + "_" + file.getName();
+        String fileName = uuid + "_" + file.getOriginalFilename();
         String filePath = "/files/" + fileName;
 
         File saveFile = new File(projectPath, fileName);
-        FileUtils.copyFile(file, saveFile); // 임시 파일을 실제 저장 경로로 복사
+        file.transferTo(saveFile); // 업로드된 파일을 원하는 위치로 바로 저장
 
         user.setProfileFilename(fileName);
         user.setProfileFilepath(filePath);
@@ -123,6 +123,7 @@ public class UserService {
 
         return user;
     }
+
     public List<SiteUser> getList () {
         return this.userRepository.findAll();
     }

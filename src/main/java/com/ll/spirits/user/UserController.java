@@ -172,21 +172,14 @@ public class UserController {
                                    RedirectAttributes redirectAttributes) throws Exception {
         SiteUser siteUser = this.userService.getUser(principal.getName());
 
-        // 업로드된 파일을 임시 폴더에 저장
-        String tempFolderPath = System.getProperty("java.io.tmpdir");
-        File tempFile = File.createTempFile("temp", file.getOriginalFilename(), new File(tempFolderPath));
-        file.transferTo(tempFile);
-
         // 프로필 이미지 업데이트
-        userService.updateProfile(siteUser, tempFile);
-
-        // 임시 파일 삭제
-        tempFile.delete();
+        userService.updateProfile(siteUser, file);
 
         redirectAttributes.addFlashAttribute("successMessage", "프로필 이미지가 업데이트되었습니다.");
 
         return "redirect:/user/mypage";
     }
+
 
 
     @GetMapping("/login")
