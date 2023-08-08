@@ -34,6 +34,6 @@
 - [x] Edit, Delete 버튼 알림문 사진 위아래 자르기
 - [x] 프로덕트서비스 private final 지우기
 - [상품등록]
-- [ ] HTML 뺌
+- [x] HTML 뺌
 - [상품수정]
-- [ ] HTML 뺌
+- [x] HTML 뺌
