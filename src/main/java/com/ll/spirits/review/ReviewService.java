@@ -15,7 +15,6 @@ import java.util.Optional;
 @Service
 public class ReviewService {
 
-    @Autowired
     private final ReviewRepository reviewRepository;
 
     public List<Review> getList () {
@@ -56,13 +55,14 @@ public class ReviewService {
         this.reviewRepository.save(review);
     }
 
-    public void vote(Review review, SiteUser siteUser) {
-        review.getVoter().add(siteUser);
-        this.reviewRepository.save(review);
-    }
+
 
     public void delete(Review review) {
         this.reviewRepository.delete(review);
     }
 
+    public void vote(Review review, SiteUser siteUser) {
+        review.getVoter().add(siteUser);
+        this.reviewRepository.save(review);
+    }
 }

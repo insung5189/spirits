@@ -63,12 +63,6 @@ public class AdminController {
     private final NationService nationService;
     private final NetWeightService netWeightService;
     private final PairingService pairingService;
-    private final MainCategoryRepository mainCategoryRepository;
-    private final SubCategoryRepository subCategoryRepository;
-    private final CostRangeRepository costRangeRepository;
-    private final ABVrangeRepository abvRangeRepository;
-    private final NetWeightRepository netWeightRepository;
-    private final NationRepository nationRepository;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/page")
@@ -78,7 +72,7 @@ public class AdminController {
         List<Review> reviewList = reviewService.getList();
         List<SiteUser> siteUserList = userService.getList();
         model.addAttribute("productList", productList);
-        model.addAttribute("reviewList",reviewList);
+        model.addAttribute("reviewList", reviewList);
         model.addAttribute("siteUserList", siteUserList);
         return "admin";
     }
@@ -279,7 +273,7 @@ public class AdminController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/delete/siteUser/{id}") // 사용자 삭제
-    public String userDelete(Principal principal, @PathVariable("id") Long id ) {
+    public String userDelete(Principal principal, @PathVariable("id") Long id) {
         SiteUser user = this.userService.getUserId(id);
         this.userService.deleteUser(user);
         return "redirect:/admin/page";

@@ -39,14 +39,10 @@ import java.util.Set;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
     private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
     private final UserSecurityService userSecurityService;
-    private final UserRepository userRepository;
     private final ReviewService reviewService;
     private final ProductService productService;
-    private final MailController mailController;
 
     @GetMapping("/signup")
     public String signup(UserCreateForm userCreateForm) {
