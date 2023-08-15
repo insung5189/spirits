@@ -3,6 +3,7 @@ package com.ll.spirits.email;
 import java.util.Properties;
 
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
