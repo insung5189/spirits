@@ -103,13 +103,13 @@ public class ProductService {
 
         // 제품 이미지파일 1 처리
         String fileName1 = uuid + "_file1_" + file1.getName();
-        String filePath1 = "/files/" + fileName1;
+        String filePath1 = File.separator + "files" + File.separator  + fileName1;
         File saveFile1 = new File(projectPath, fileName1);
         FileUtils.copyFile(file1, saveFile1);
 
         // 제품 이미지파일 2 처리
         String fileName2 = uuid + "_file2_" + file2.getName();
-        String filePath2 = "/files/" + fileName2;
+        String filePath2 = File.separator + "files" + File.separator + fileName2;
         File saveFile2 = new File(projectPath, fileName2);
         FileUtils.copyFile(file2, saveFile2);
 
@@ -212,13 +212,13 @@ public class ProductService {
 
         // 제품 이미지파일 1 처리
         String fileName1 = uuid + "_file1_" + file1.getName();
-        String filePath1 = "/files/" + fileName1;
+        String filePath1 = File.separator + "files" + File.separator  + fileName1;
         File saveFile1 = new File(projectPath, fileName1);
         FileUtils.copyFile(file1, saveFile1);
 
         // 제품 이미지파일 2 처리
         String fileName2 = uuid + "_file2_" + file2.getName();
-        String filePath2 = "/files/" + fileName2;
+        String filePath2 = File.separator + "files" + File.separator  + fileName2;
         File saveFile2 = new File(projectPath, fileName2);
         FileUtils.copyFile(file2, saveFile2);
 
