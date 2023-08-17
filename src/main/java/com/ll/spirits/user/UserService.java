@@ -6,6 +6,7 @@ import com.ll.spirits.DataNotFoundException;
 //import com.ll.spirits.user.emailService.EmailVerificationTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,6 +24,8 @@ import java.util.UUID;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    @Value("${app.imageFilePath}") // Injecting the image file path from application.yml
+    private String imageFilePath;
 
 //    private final EmailVerificationTokenRepository tokenRepository;
 //    private final EmailService emailService;
@@ -108,21 +111,12 @@ public class UserService {
         return user;
     }
     public SiteUser updateProfile(SiteUser user, File file) throws IOException {
-        String projectPath =
-                System.getProperty("user.dir") +
-                        File.separator + "src" +
-                        File.separator + "main" +
-                        File.separator + "resources" +
-                        File.separator + "static" +
-                        File.separator + "files";
-        System.out.println(projectPath);
-
         UUID uuid = UUID.randomUUID();
         String fileName = uuid + "_" + file.getName();
         String filePath = File.separator + "files" + File.separator + fileName;
 
-        File saveFile = new File(projectPath, fileName);
-        FileUtils.copyFile(file, saveFile); // 임시 파일을 실제 저장 경로로 복사
+        File saveFile = new File(imageFilePath, fileName);
+        FileUtils.copyFile(file, saveFile); // Copy the temporary file to the actual storage path
 
         user.setProfileFilename(fileName);
         user.setProfileFilepath(filePath);
