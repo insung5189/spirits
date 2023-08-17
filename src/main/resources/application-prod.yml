@@ -15,5 +15,6 @@ spring:
       format_sql: true
       show_sql: true
     open-in-view: true
+
 app:
   imageFilePath: /docker_projects/spirits/temp/imagefiles
