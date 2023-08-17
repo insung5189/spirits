@@ -113,13 +113,12 @@ public class UserService {
     public SiteUser updateProfile(SiteUser user, File file) throws IOException {
         UUID uuid = UUID.randomUUID();
         String fileName = uuid + "_" + file.getName();
-        String filePath = File.separator + "files" + File.separator + fileName;
 
         File saveFile = new File(imageFilePath, fileName);
         FileUtils.copyFile(file, saveFile); // Copy the temporary file to the actual storage path
 
         user.setProfileFilename(fileName);
-        user.setProfileFilepath(filePath);
+        user.setProfileFilepath(imageFilePath + File.separator + fileName); // Store full path
         this.userRepository.save(user);
 
         return user;
