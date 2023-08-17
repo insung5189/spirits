@@ -108,11 +108,18 @@ public class UserService {
         return user;
     }
     public SiteUser updateProfile(SiteUser user, File file) throws IOException {
-        String projectPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "files";
+        String projectPath =
+                System.getProperty("user.dir") +
+                        File.separator + "src" +
+                        File.separator + "main" +
+                        File.separator + "resources" +
+                        File.separator + "static" +
+                        File.separator + "files";
+        System.out.println(projectPath);
 
         UUID uuid = UUID.randomUUID();
         String fileName = uuid + "_" + file.getName();
-        String filePath = "/files/" + fileName;
+        String filePath = File.separator + "files" + File.separator + fileName;
 
         File saveFile = new File(projectPath, fileName);
         FileUtils.copyFile(file, saveFile); // 임시 파일을 실제 저장 경로로 복사
