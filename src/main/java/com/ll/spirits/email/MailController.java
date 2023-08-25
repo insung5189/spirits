@@ -32,6 +32,9 @@ public class MailController {
         String to = email;
         String title = "안녕하세요 주류추천 서비스 Spirits 입니다. 회원가입시 필요한 인증번호 입니다.";
         String content = "[인증번호] " + mailKey + " 입니다. <br/> 인증번호 확인란에 기입해주십시오.";
+        String linkText = "https://www.bookuluv.devh.me/";
+        String url = "<a href=\"" + linkText + "\">" + linkText + "</a>";
+        content += url;
         try {
             MimeMessage mail = mailSender.createMimeMessage();
             MimeMessageHelper mailHelper = new MimeMessageHelper(mail, true, "UTF-8");

@@ -231,7 +231,7 @@ public class AdminController {
         System.out.println("수정된 캐스크: " + productForm.getCasks());
         System.out.println("수정된 생산국: " + productForm.getNationId());
         if (bindingResult.hasErrors()) {
-            System.out.println("유효성 검사 오류 발생");
+            System.out.println("제품을 수정할 수 없습니다.");
             return "product_form";
         }
         SiteUser siteUser = this.userService.getUser(principal.getName());
@@ -244,6 +244,7 @@ public class AdminController {
         file2.transferTo(tempFile2);
 
         this.productService.modifyProduct(id, productForm, siteUser, tempFile1, tempFile2);
+
 
         tempFile1.delete();
         tempFile2.delete();
