@@ -313,14 +313,10 @@ $(".like").click(function() {
 })
 
 function toggleReviewModifyForm(_this) {
-<!--    alert(_this.dataset.form);-->
-<!--    alert(_this.dataset.content);-->
     if(confirm("리뷰를 수정하시겠어요?")) {
     $(_this.dataset.form + " textarea").val(_this.dataset.content);
     $(_this.dataset.form).toggleClass("active");
         };
-<!--  var reviewModifyForm = a.parentElement.parentElement.nextElementSibling;-->
-<!--  reviewModifyForm.classList.toggle('active');-->
 }
 
 

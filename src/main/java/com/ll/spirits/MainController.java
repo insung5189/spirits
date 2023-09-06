@@ -22,11 +22,11 @@ public class MainController {
     private final MainCategoryService mainCategoryService;
     private final UserService userService;
 
+//    @GetMapping("/")
+//    public String root () {
+//        return "redirect:/main"; // ROOT로 접근했을 때 페이지가 해당 주소로 리다이렉트 되게끔 리턴.
+//    }
     @GetMapping("/")
-    public String root () {
-        return "redirect:/main"; // ROOT로 접근했을 때 페이지가 해당 주소로 리다이렉트 되게끔 리턴.
-    }
-    @GetMapping("/main")
     public String mainPage(Model model, Principal principal) {
 
         List<Product> voterProducts = productService.getTopVotedProducts(5); // 좋아요 수가 가장 많은 상위 5개 제품 가져오기
